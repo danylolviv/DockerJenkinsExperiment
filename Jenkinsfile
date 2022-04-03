@@ -3,10 +3,10 @@
     stages{
         stage("Git merge"){
             steps{
-            sh "git fetch --all"
-            sh "git checkout main"
-            sh "git pull"
-            sh "git merge origin/${GIT_BRANCH}"
+                sh "git fetch --all"
+                sh "git checkout main"
+                sh "git pull"
+                sh "git merge origin/${GIT_BRANCH}"
             }
         }
         stage("Build"){
