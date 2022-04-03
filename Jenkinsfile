@@ -1,13 +1,28 @@
  pipeline{
     agent any
-    triggers{
-        pollSCM("* * * * *")
-    }
     stages{
-        stage("MyFirstStage"){
+        stage("Git merge"){
             steps{
-            echo "Yay we are running"
+            sh "git fetch --all"
+            sh "git checkout main"
+            sh "git pull"
+            sh "git merge origin/${GIT_BRANCH}"
             }
+        }
+        stage("Build"){
+            steps{
+                echo "Now we build"
+            }
+        }
+        stage("Test"){
+            steps{
+                echo "Now we west"
+            }
+        }
+        stage("Deliver"){
+           steps{
+              echo "Now we deliver"
+           }
         }
     }
  }
